@@ -5,7 +5,7 @@ import "./Teacher.css"
 
 const Teacher = (props) => {
     // console.log("this is key", props.teachers)
-    const { name, img, email, salary, phone, age } = props.teachers
+    const { id, name, img, email, salary, phone, age } = props.teachers
     // console.log(name)
     const element = <FontAwesomeIcon icon={faShoppingCart} />
 
@@ -16,18 +16,19 @@ const Teacher = (props) => {
             <article className="sub-part-teacher">
                 <div className="teacher-photo">
                     <img src={img} alt="" />
-                </div>
-                {/* This is teacher information part  */}
-                <div className="teacher-information">
-                    <h2>{name}</h2>
-                    <p><small>Email:{email}</small></p>
-                    <p>Age:{age}</p>
-                    <p><small>phone:{phone}</small></p>
-                    <p>salary:{salary}$</p>
-                    <button onClick={() => props.handleAddToCart(props.id)}>
-                        {element}
-                        Add To Cart
-                    </button>
+
+                    {/* This is teacher information part  */}
+                    <div className="teacher-information">
+                        <h2>{name}</h2>
+                        <p><small>Email:{email}</small></p>
+                        <p>Age:{age}</p>
+                        <p><small>phone:{phone}</small></p>
+                        <p>salary:{salary}$</p>
+                        <button onClick={() => props.handleAddToCart(id)}>
+                            {element}
+                            Add To Cart
+                        </button>
+                    </div>
                 </div>
             </article>
         </div>

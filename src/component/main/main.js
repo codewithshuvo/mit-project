@@ -6,15 +6,21 @@ import "./main.css"
 const Main = () => {
     const [teachers, setteachers] = useState([])
     const [cart, setcart] = useState([])
+    const [addedTeacher, setAddedTeacher] = useState([])
     useEffect(() => {
         fetch('./mit.json')
             .then(res => res.json())
             .then(data => setteachers(data))
     }, [])
     const handleAddToCart = (id) => {
-        const newCart = [...cart, teachers]
+        const addedTeacher = teachers.filter(teacher => {
+            return teacher.id === id
+        })
+        const newCart = [...cart, addedTeacher[0]]
         setcart(newCart)
+        setAddedTeacher(addedTeacher[0])
         // console.log("id", id)
+        // console.log(addedTeacher[0].name)
 
     }
     return (
@@ -29,7 +35,7 @@ const Main = () => {
                 }
             </div>
             <div className="body-Summary">
-                <Cart cart={cart}></Cart>
+                <Cart cart={cart} addedTeacher={addedTeacher}></Cart>
             </div>
         </div>
     );
